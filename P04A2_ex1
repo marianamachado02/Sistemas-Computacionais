@@ -1,0 +1,24 @@
+		;1.Implementar	um programa que guarda em R0 o maior valor de R1, R2 e R3;
+		
+start	mov		r1, #21
+		mov		r2, #30
+		mov		r3, #19
+		
+if		cmp		r1,r2
+		bmi		else
+		
+then		cmp		r1,r3
+		bpl		ummaior
+		bmi		else
+		
+else		cmp		r2,r3
+		bpl		doismaior
+		bmi		tresmaior
+		
+ummaior	mov		r0, r1
+		end
+doismaior	mov		r0,r2
+		end
+tresmaior	mov		r0, r3
+		end
+		

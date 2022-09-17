@@ -1,0 +1,30 @@
+				;8)		Tendo por base o assembly ARMv7 e o emulador VisUAL responda às seguintes questões:
+				;a)		Desenvolva uma sub-rotina que determine o somatório dos valores de um vetor de números
+				;de		32 bit, sendo o vetor de número terminado pelo valor 0. A interface com a sub-rotina
+				;deve	ser a seguinte: R1 – endereço do primeiro elemento do vetor; R0 – somatório.
+
+	;; TÁ MAL
+
+	
+ELEMENTOS			equ		8
+VETOR			dcd		10,2,3,4,6,7,8,9,0
+				
+start			adr		r4, VETOR
+				mov		r0, #0 ; somatorio
+				mov		r1, #0
+				mov		r2,#0 ; contador while
+				bl		primeiro_elemento
+				end
+				
+primeiro_elemento	ldr		r5, [r4]
+				add		r1, r1,r5
+				bl		somatorio
+				
+somatorio			cmp		r2,#ELEMENTOS
+				beq		fimdocontador
+				ldr		r5, [r4]
+				add		r0,r0,r5
+				add		r2,r2,#1
+				
+fimdocontador		mov		r15, r14
+				

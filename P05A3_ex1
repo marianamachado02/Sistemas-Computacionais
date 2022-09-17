@@ -1,0 +1,23 @@
+			;1.Implementar	um programa que calcula quantos zeros contém um vetor;
+			
+start		mov		r1, #0 ;Valores 0
+			mov		r4, #0 ; contador while
+			adr		r5, VECTOR ; vetor carregado para r5
+			
+WHILE		cmp		r4, #NELEM
+			beq		fecharprograma
+			ldr		r2, [r5], #4
+			cmp		r2, #0
+			beq		ZERO
+			
+SKIP			add		r4,r4,#1
+			b		WHILE
+			
+ZERO			add		r1,r1,#1
+			b		SKIP
+			
+fecharprograma	end
+			
+NELEM		equ		7 ;numero de elementos
+VECTOR		dcd		0, 12, 0, 9, 0, 23, 0 ; elementos dos vetores
+			

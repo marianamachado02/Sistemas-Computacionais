@@ -1,0 +1,30 @@
+			;exame	versão A 8 de fevereiro de 2022
+			;		10) Tendo um vetor de valores de 32 bit, elabore um programa em assembly ARMv7 capaz de
+			;		contar quantos elementos desse vetor são pares e quantos são zero (zero não é par nem ímpar)
+			
+NELEM		equ		7
+VECTOR		dcd		1,0,4,5,6,0,2
+			
+start		mov		r1, #0 ; contar elementos 0
+			mov		r2, #0 ; contar elementos pares
+			mov		r3, #0 ; contador
+			adr		r5, VECTOR
+			
+WHILE		cmp		r3, #NELEM
+			beq		sair_programa
+			ldr		r6, [r5], #4
+			cmp		r6, #0
+			beq		zero_counter
+			ands		r6, r6, #0b1
+			beq		pares_counter
+			
+SKIP			add		r3,r3,#1
+			b		WHILE
+			
+sair_programa	end
+			
+zero_counter	add		r1,r1,#1
+			b		SKIP
+			
+pares_counter	add		r2,r2,#1
+			b		SKIP

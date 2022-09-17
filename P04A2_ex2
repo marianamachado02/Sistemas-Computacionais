@@ -1,0 +1,23 @@
+		;2.		Implementar um programa que guarda em R0 o menor valor de R1, R2 e R3;
+		
+start	mov		r1, #3
+		mov		r2, #2
+		mov		r3, #4
+		
+if		cmp		r1,r2
+		bmi		else
+		
+then		cmp		r2,r3
+		bmi		doismenor
+		bpl		else
+		
+else		cmp		r1,r3
+		bpl		tresmenor
+		bmi		ummenor
+		
+ummenor	mov		r0, r1
+		end
+doismenor	mov		r0, r2
+		end
+tresmenor	mov		r0, r3
+		end

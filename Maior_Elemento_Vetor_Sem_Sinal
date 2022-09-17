@@ -1,0 +1,22 @@
+			;		Calcular qual o valor máximo (maior) do  vetor (versão sem sinal);
+			
+start		adr		r2, VECTOR
+			mov		r1,#0
+			mov		r0,#0
+			
+WHILE		cmp		r1,#NELEM
+			beq		PROGRAM_END
+			ldr		r3,[r2]
+			cmp		r3,r0
+			bgt		GREATER
+SKIP
+			add		r1,r1,#1
+			add		r2,r2,#1*4
+			b		WHILE
+			
+			
+GREATER		mov		r0,r3
+			b		SKIP
+PROGRAM_END	end
+NELEM		equ		10
+VECTOR		dcd		0,1,20,3,4,50,6,7,80,90

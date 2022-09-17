@@ -1,0 +1,30 @@
+			;10)		Tendo um vetor/string de valores de 8 bit, elabore um programa em assembly ARMv7 capaz de
+			;contar	as maíusculas (supondo código ASCII). A string tem formato tipo C (acaba com 0). ‘A’ e
+			;‘Z’		representam os valores inteiros respetivos.
+			
+STRING1		dcb		'A','a','C','d','B','f','!','t',0
+tamanho		FILL		4
+			
+start		adr		r4, STRING1
+			mov		r1,#0 ;contar maiúsculas
+			bl		contador ; branch and link para o contador
+			adr		r5, tamanho
+			str		r1,[r2]
+			end
+			
+			
+fimdocontador	mov		r15,r14
+			
+contador1		cmp		r5, #0
+			beq		fimdocontador
+			
+contador		ldrb		r5,[r4], #1
+			cmp		r5, #0x41
+			bmi		contador1
+			cmp		r5, #0x5a
+			bpl		contador1
+			add		r1,r1,#1
+			b		contador1
+			
+			
+			

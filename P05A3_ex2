@@ -1,0 +1,25 @@
+			;2.Implemente	um programa que contabilize quantas vezes um valor indicado em r3 aparecer no vetor;
+			
+			
+			
+NELEM		equ		6
+VECTOR		dcd		1,2,4,5,4,4
+			
+start		mov		r3, #4 ; valor indicado
+			mov		r1, #0 ; contar valores do r3
+			mov		r2, #0 ; contador
+			adr		r5, VECTOR ; carregar vetor em r5
+			
+WHILE		cmp		r2,#NELEM
+			beq		fim_programa
+			ldr		r6, [r5], #4
+			cmp		r6,r3
+			beq		contar_valores
+			
+			
+SKIP			add		r2,r2,#1
+			b		WHILE
+			
+contar_valores	add		r1,r1,#1
+			b		SKIP
+fim_programa	end
